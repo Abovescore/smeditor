@@ -167,7 +167,7 @@
           Learn how to use SMEditor with the built-in help guide, which contains
           tutorials and documentation.
         </p>
-        <a href="/smeditor/guide/" target="_blank">
+        <a href="guide/" target="_blank">
           <button class="large blue">
             <div class="button-content">
               <div class="button-text">
@@ -183,7 +183,7 @@
           SMEditor can be embedded into your own website. Click the button below
           to start.
         </p>
-        <a href="/smeditor/embed/" target="_blank">
+        <a href="embed/" target="_blank">
           <button class="large blue">
             <div class="button-content">
               <div class="button-text">
@@ -239,7 +239,7 @@
         } else if (navigator.userAgent.includes("Linux")) {
           os = "linux"
         }
-        fetch("/smeditor/assets/app/versions.json")
+        fetch("assets/app/versions.json")
           .then(data => data.json())
           .then(versions => {
             versions = versions.sort((a, b) => {

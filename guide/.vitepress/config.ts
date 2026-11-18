@@ -1,9 +1,10 @@
 import { defineConfig } from "vitepress"
+import { getBasePath } from "../../basePath.js"
 
 export default defineConfig({
   title: "SMEditor Guide",
   description: "Guide on how to use SMEditor",
-  base: "/smeditor/guide/",
+  base: getBasePath() + "guide/",
   outDir: "../dist/guide",
   themeConfig: {
     search: {

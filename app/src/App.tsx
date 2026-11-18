@@ -198,7 +198,7 @@ export class App {
       if (Flags.url != null) {
         embed.appendChild(document.createTextNode(" | Open this chart in a "))
         const newLink = document.createElement("a")
-        const url = new URL(location.origin + "/smeditor/app/")
+        const url = new URL(location.origin + import.meta.env.BASE_URL + "app/")
         newLink.innerText = "new tab"
         newLink.target = "_blank"
         url.searchParams.append("url", Flags.url)
@@ -555,7 +555,7 @@ export class App {
     if (process.platform == "darwin") {
       os = nw.require("os").arch() == "arm64" ? "mac-arm" : "mac-x64"
     } else if (process.platform == "linux") os = "linux"
-    fetch("/smeditor/assets/app/versions.json")
+    fetch(import.meta.env.BASE_URL + "assets/app/versions.json")
       .then(data => data.json())
       .then((versions: AppVersion[]) => {
         versions = versions.sort((a, b) => {

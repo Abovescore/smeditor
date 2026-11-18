@@ -5,9 +5,11 @@ import { join, resolve } from 'path';
 import { defineConfig } from "vite";
 import monacoEditorEsmPlugin from 'vite-plugin-monaco-editor-esm';
 import { VitePWA } from 'vite-plugin-pwa';
+import { getBasePath } from './basePath.js';
 
 // https://vitejs.dev/config/
 export default defineConfig(() => {
+  const base = getBasePath()
   try {
     process.env.VITE_GIT_COMMIT_DATE = execSync('git log -1 --format=%cI').toString().trimEnd()
     process.env.VITE_GIT_COMMIT_HASH = execSync('git rev-parse HEAD').toString().trimEnd().slice(0, 7)
@@ -16,7 +18,7 @@ export default defineConfig(() => {
     console.error("Couldn't fetch git data", error)
   }
   return {
-    base: "/smeditor/",
+    base,
     appType: "mpa",
     plugins: [
       react(),
@@ -32,7 +34,7 @@ export default defineConfig(() => {
         manifest: {
           short_name: "SMEditor",
           name: "SMEditor",
-          start_url: "/smeditor/app",
+          start_url: base + "app",
           display: "standalone",
           theme_color: "#18191c",
           background_color: "#18191c",
